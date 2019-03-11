@@ -1,0 +1,63 @@
+Prerequisite:
+apt-get install python i2c-tools
+SSH Enabled
+
+### Internet Key
+install with 
+apt-get install comgt kmod-usb-uhci kmod-usb-serial kmod-usb-serial-option kmod-usb-acm usb-modeswitch usb-modeswitch-data luci-proto-3g
+apt-get install ppp usb-modeswitch wvdial minicom
+
+Edit /etc/config/network with
+
+config interface wan
+        option ifname  'ppp0'
+        option pincode '1234'
+        option device  '/dev/ttyUSB0'
+        option apn     'YOUR PROVIDER'
+        option service 'umts'
+        option proto   '3g'
+        
+        
+### GPS
+sudo apt-get install gpsd gpsd-clients python-gps
+sudo gpsd /dev/ttyUSB0 -F /var/run/gpsd.sock
+
+RESET (just in case)
+sudo killall gpsd
+sudo gpsd /dev/ttyUSB0 -F /var/run/gpsd.sock
+
+FIX GPSD WITH YOUR MODEL. In my case:
+edit /etc/default/gpsd
+
+START_DAEMON="true"
+GPSD_OPTIONS="/dev/ttyUSB0"
+DEVICES=""
+USBAUTO="true"
+GPSD_SOCKET="/var/run/gpsd.sock"
+
+### GYROSCOPE
+edit /etc/modules
+
+i2c-bcm2708
+i2c-dev
+reboot
+sudo vi /etc/modprobe.d/raspi-blacklist.conf
+#blacklist spi-bcm2708
+#blacklist i2c-bcm2708
+
+
+### NO LOGIN
+edit /etc/inittab
+Scroll down to:
+
+1:2345:respawn:/sbin/getty 115200 tty1
+and change to
+
+#1:2345:respawn:/sbin/getty 115200 tty1
+Under that line add:
+
+1:2345:respawn:/bin/login -f pi tty1 </dev/tty1 >/dev/tty1 2>&1
+
+AUTORUN gyro1.py
+after login
+nano ~/.bashrc
