@@ -14,4 +14,4 @@ all it's offline because the demon isn't started.
 
 So the second time all works fine...
 
-At the startup, I setup a cgps -s fake call for start everything.
+At the startup of raspbian (SO FIRST OF ALL), I setup a cgps -s fake call for start everything.
