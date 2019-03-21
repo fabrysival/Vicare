@@ -1,0 +1,3 @@
+Issue:
+
+MPU6050 Driver maybe have an overflow if test all stream from i2C bus. Check it and take data every 2/3 seconds
