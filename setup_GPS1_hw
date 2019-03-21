@@ -1,0 +1,17 @@
+Adafruit ultimate GPS 
+tutorial https://learn.adafruit.com/adafruit-ultimate-gps 
+tutorial i'd like https://learn.adafruit.com/adafruit-ultimate-gps-on-the-raspberry-pi (with USB interface, for modularity scope)
+
+so plug it in a USB port && install 
+
+gpsd gpsd-clients
+
+WARNING: The first time you lunch gpsd with
+
+cgps -s
+
+all it's offline because the demon isn't started.
+
+So the second time all works fine...
+
+At the startup, I setup a cgps -s fake call for start everything.
