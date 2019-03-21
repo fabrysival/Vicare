@@ -1,0 +1,28 @@
+MPU-6050 https://www.sparkfun.com/products/11028
+tutorial https://tutorials-raspberrypi.com/measuring-rotation-and-acceleration-raspberry-pi/
+
+Rpi			            Gyro
+Pin 1 (3.3V)	<->	  VCC
+Pin 3 (SDA)	  <->	  SDA
+Pin 5 (SCL)	  <->	  SCL
+Pin 6 (GND)	  <->	  GND
+
+On raspi-config activate SPI and I2C
+On some raspbian versions (older) edit /etc/modprobe.d/raspi-blacklist.conf
+and /ect/modules with these add 
+
+i2c-bcm2708
+i2c-dev
+
+and reboot
+
+For test it you must install i2c-tools python-smbus
+and lunch
+
+i2cdetect -y 1
+- OR -
+i2cdetect -y 0
+- OR - 
+i2cdetect -y 2
+
+You should see HEX 68 on e60 address if it's all OK 
