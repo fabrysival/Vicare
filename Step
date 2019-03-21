@@ -1,0 +1,7 @@
+Take a Rpi with a sd card
+Setup Raspbian OS
+Setup, connect and TEST Gyroscope MPU 6050
+Setup, connect and TEST a GPS module with USB-serial interface
+Setup, connect and TEST an Internet key
+PUT Gyro1.py on autologon
+PUT Gyro2.py driver for MPU 6050 on the same directory
