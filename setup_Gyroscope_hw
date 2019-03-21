@@ -26,3 +26,5 @@ i2cdetect -y 0
 i2cdetect -y 2
 
 You should see HEX 68 on e60 address if it's all OK 
+
+WARNING: MPU DEV should have a 'driver' for python programming. In my case it's called GYRO2.py and the main script GYRO1.py
